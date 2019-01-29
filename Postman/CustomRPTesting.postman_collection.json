@@ -1,0 +1,453 @@
+{
+	"info": {
+		"_postman_id": "5b45796c-46c2-4b74-b3ad-3fbada694d22",
+		"name": "CustomRPTesting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Application",
+			"item": [
+				{
+					"name": "CustomOperations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseuri}}/subscriptions/{{subscriptionid}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.Solutions/applications/{{applicationname}}/customoperations{{apiversion}}",
+							"host": [
+								"{{baseuri}}"
+							],
+							"path": [
+								"subscriptions",
+								"{{subscriptionid}}",
+								"resourceGroups",
+								"{{resourcegroup}}",
+								"providers",
+								"Microsoft.Solutions",
+								"applications",
+								"{{applicationname}}",
+								"customoperations{{apiversion}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Application",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "969f8523-ef8a-44d6-a09e-200a83cc20c7",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "cc2dd50f-dc9c-4db3-888f-b32abf72d0e9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"location\": \"eastus\",\r\n            \"plan\": {\r\n                \"name\": \"actionstest\",\r\n                \"product\": \"actionstest-preview\",\r\n                \"publisher\": \"marketplace-test\",\r\n                \"version\": \"1.0.0\"\r\n            },\r\n    \"properties\" : {\r\n    \t\"managedResourceGroupId\": \"/subscriptions/{{subscriptionid}}/resourceGroups/{{resourcegroup}}_managed\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{baseuri}}/subscriptions/{{subscriptionid}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.Solutions/applications/{{applicationname}}{{apiversion}}",
+							"host": [
+								"{{baseuri}}"
+							],
+							"path": [
+								"subscriptions",
+								"{{subscriptionid}}",
+								"resourceGroups",
+								"{{resourcegroup}}",
+								"providers",
+								"Microsoft.Solutions",
+								"applications",
+								"{{applicationname}}{{apiversion}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "969f8523-ef8a-44d6-a09e-200a83cc20c7",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "cc2dd50f-dc9c-4db3-888f-b32abf72d0e9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"location\": \"East US\",\r\n \"plan\": {\r\n                \"name\": \"actionstest\",\r\n                \"product\": \"actionstest-preview\",\r\n                \"publisher\": \"marketplace-test\",\r\n                \"version\": \"1.0.0\"\r\n            },\r\n  \"properties\": {\r\n  \t\"managedResourceGroupId\" : \"/subscriptions/{{subscriptionid}}/resourceGroups/{{applicationname}}_managed\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "{{baseuri}}/subscriptions/{{subscriptionid}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.Solutions/applications/{{applicationname}}{{apiversion}}",
+							"host": [
+								"{{baseuri}}"
+							],
+							"path": [
+								"subscriptions",
+								"{{subscriptionid}}",
+								"resourceGroups",
+								"{{resourcegroup}}",
+								"providers",
+								"Microsoft.Solutions",
+								"applications",
+								"{{applicationname}}{{apiversion}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MiniRP",
+			"item": [
+				{
+					"name": "Operations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "969f8523-ef8a-44d6-a09e-200a83cc20c7",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseuri}}/subscriptions/{{subscriptionid}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.CustomProviders/resourceproviders/{{minirpname}}/operations{{apiversion}}",
+							"host": [
+								"{{baseuri}}"
+							],
+							"path": [
+								"subscriptions",
+								"{{subscriptionid}}",
+								"resourceGroups",
+								"{{resourcegroup}}",
+								"providers",
+								"Microsoft.CustomProviders",
+								"resourceproviders",
+								"{{minirpname}}",
+								"operations{{apiversion}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MiniRP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "969f8523-ef8a-44d6-a09e-200a83cc20c7",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"location\": \"eastus\",\r\n    \"properties\": {\r\n        \"actions\": [\r\n            {\r\n                \"name\": \"chefclients\",\r\n                \"routingType\": \"ProxyOnly\",\r\n                \"endPoints\": [\r\n                    {\r\n                        \"endPointUri\": \"https://ramatestfuncs.azurewebsites.net/\",\r\n                        \"timeOut\": \"PT1M\",\r\n                        \"enabled\": true,\r\n                        \"apiVersion\": \"2018-09-01-preview\"\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"recipes\",\r\n                \"routingType\": \"ProxyOnly\",\r\n                \"endPoints\": [\r\n                    {\r\n                        \"endPointUri\": \"https://lazinnatfuncs.azurewebsites.net/api/\",\r\n                        \"timeOut\": \"PT1M\",\r\n                        \"enabled\": true,\r\n                        \"apiVersion\": \"2018-09-01-preview\"\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"TestAction\",\r\n                \"routingType\": \"ProxyOnly\",\r\n                \"endPoints\": [\r\n                    {\r\n                        \"endPointUri\": \"https://lazinnatfuncs.azurewebsites.net/api/\",\r\n                        \"timeOut\": \"PT1M\",\r\n                        \"enabled\": true,\r\n                        \"apiVersion\": \"2018-09-01-preview\"\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n }\r\n}"
+						},
+						"url": {
+							"raw": "{{baseuri}}/subscriptions/{{subscriptionid}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.CustomProviders/resourceproviders/{{minirpname}}{{apiversion}}",
+							"host": [
+								"{{baseuri}}"
+							],
+							"path": [
+								"subscriptions",
+								"{{subscriptionid}}",
+								"resourceGroups",
+								"{{resourcegroup}}",
+								"providers",
+								"Microsoft.CustomProviders",
+								"resourceproviders",
+								"{{minirpname}}{{apiversion}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "969f8523-ef8a-44d6-a09e-200a83cc20c7",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseuri}}/subscriptions/{{subscriptionid}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.CustomProviders/resourceproviders/{{minirpname}}{{apiversion}}",
+							"host": [
+								"{{baseuri}}"
+							],
+							"path": [
+								"subscriptions",
+								"{{subscriptionid}}",
+								"resourceGroups",
+								"{{resourcegroup}}",
+								"providers",
+								"Microsoft.CustomProviders",
+								"resourceproviders",
+								"{{minirpname}}{{apiversion}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Requests for MiniRP"
+		},
+		{
+			"name": "Playground",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "424d3ae2-f37b-41c0-9cb5-e40978f591da",
+						"exec": [
+							"var responseval;",
+							"var url  = pm.variables.get('authendpoint')",
+							"pm.sendRequest(url, function (err, response) {",
+							"    console.log(response.json());",
+							"    console.log(response.json().clientCertificates[0].thumbprint);",
+							"    responseVal = response.json().clientCertificates[0].thumbprint;",
+							"    pm.environment.set('Tempvariable',responseVal);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseuri}}/subscriptions/e04180e7-37e0-49e4-b404-425e5f7ad5a0/resourceGroups/lazinnat-chef-rgrahccblaz7ikq/providers/Microsoft.CustomProviders/resourceProviders/public{{apiversion}}",
+					"host": [
+						"{{baseuri}}"
+					],
+					"path": [
+						"subscriptions",
+						"e04180e7-37e0-49e4-b404-425e5f7ad5a0",
+						"resourceGroups",
+						"lazinnat-chef-rgrahccblaz7ikq",
+						"providers",
+						"Microsoft.CustomProviders",
+						"resourceProviders",
+						"public{{apiversion}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "969f8523-ef8a-44d6-a09e-200a83cc20c7",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseuri}}/subscriptions/{{subscriptionid}}/resourceGroups/{{managedresourcegroup}}/providers/Microsoft.Solutions/applications/{{applicationname}}{{apiversion}}",
+					"host": [
+						"{{baseuri}}"
+					],
+					"path": [
+						"subscriptions",
+						"{{subscriptionid}}",
+						"resourceGroups",
+						"{{managedresourcegroup}}",
+						"providers",
+						"Microsoft.Solutions",
+						"applications",
+						"{{applicationname}}{{apiversion}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accesstoken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "97af8ffe-e696-4e96-983f-f512b3245c56",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e7f84c59-8d37-4a4c-a0b0-8a560ea04919",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "290a7d2b-d5f2-42ca-b14e-c5748890f4bf",
+			"key": "accesstoken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "5e3e9cfc-953d-42df-b64b-20eb76dcf739",
+			"key": "baseuri",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "8bbd0e88-d781-4e61-b580-ebb222518354",
+			"key": "subscriptionid",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "6cc10528-795e-4c4b-9798-670441e96d4c",
+			"key": "resourcegroup",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "ceb144d6-7ba7-4d9b-a618-7ce15b6b7b4d",
+			"key": "applicationname",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "86cad9f9-9604-4b4d-8b04-17105c8853b3",
+			"key": "apiversion",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
