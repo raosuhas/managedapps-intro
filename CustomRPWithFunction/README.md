@@ -1,45 +1,45 @@
-# Developing Managed Applications
-Collection of ARM templates and scripts to get started with developing managed apps
+# Creating a Custom Provider with Resources
 
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fraosuhas%2Fmanagedapps-intro%2Fmaster%2FCustomRPWithFunction%2Fazuredeploy.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/> 
+</a>
 
-# Prerequisites
+This sample template deploys a custom resource provider to azure and creates a user using an ARM template. 
+To deploy this template please use the following command from the root of the github repo : 
 
-- **Azure Powershell**
-Please install the latest version of Azure Powershell by running the following command in your powershell session : 
-Install-Module Az
-
-
-# Custom Providers
-
-Custom Providers gives publishers in Azure a way to extend azure and azure resources. The customProviders resource providers also enables users to add actions and resources to managed apps to enable functionality on the managed apps to run programmatic commands on them.
-
-# How to topics
-
-The samples provided in this github repo can be easily deployed to your Azure renvironment by running the powershell command provided at the root of this repo. 
-To run a template in a folder please use the following command  :
-
-### PowerShell
-```PowerShell
-.\Deploy-AzureResourceGroup.ps1 -ArtifactStagingDirectory [NameofthefolderToDEploy] -ResourceGroupLocation eastus -ResourceGroupName [ResourceGroupToDeploy]]
+### Deploy
+```Deploy
+.\Deploy-AzureResourceGroup.ps1 -ArtifactStagingDirectory CustomRPWithFunction -ResourceGroupLocation eastus -ResourceGroupName [ResourceGroupToDeploy]
 ```
-The Deploy-AzureResourceGroup.ps1 is same as used in t azure-quickstart-templates along with a few additions to enable smooth deployment of the templates provided here. 
 
-### Deploy TO Azure
-In addition each template file also has an option to deploy to azure in the Readme.md file present at the the root of the folder
+# Details on the custom resource provider created. 
 
-# Getting Started
+This sample deployment creates the following two apis on the resource. 
 
-Deploy a custom provider with a simple user resource and a ping action : 
-+ [** Creating a Custom Provider with resources **](CustomRPWithFunction/Readme.md)
+1) An ARM extended resource called "users"
+2) An APi called "ping"
 
-The above Custom resource provider is backed by an azure function app.
-Deploy the function app and understand the requirements for the api that backs the custom provider : 
-+ [** Creating an azure function **](SampleFunction/Readme.md)
+### Users 
 
-It is recommended to supply a swagger spec for custom providers when deploying them. 
-To learm more about swagger and how to incorporate validation for custom providers
-+ [** Incorporating swagger into Custom Providers **](CustomRPWithSwagger/Readme.md)
+The users resource is defined in the following part of the ARM template : 
 
+```
+"resourceTypes": [
+                                {
+                                    "name":"users",
+                                    "routingType":"ProxyOnly",
+                                    "endpoints": [
+                                        {
+                                            "enabled": true,
+                                            "apiVersion": "[variables('customrpApiversion')]",
+                                            "endpointUri": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api')]",
+                                            "timeout": "PT15S"
+                                        }
+                                    ]
+                                }
+                            ]
+```
+In the custom provider template we can see the function called
 
 
 
