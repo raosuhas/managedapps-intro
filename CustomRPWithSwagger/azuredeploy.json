@@ -127,12 +127,12 @@
                             "Specifications":[
                                 {
                                     "ApiTag": "[variables('customrpApiversion')]",
-                                    "SwaggerFilePath": "https://githubusercontent.com/raosuhas/functions-repo/master/Swagger/pingaction.json",
+                                    "SwaggerFilePath": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/pingaction.json",
                                     "RouteTag": "ping"
                                 },
                                 {
                                     "ApiTag": "[variables('customrpApiversion')]",
-                                    "SwaggerFilePath": "https://githubusercontent.com/raosuhas/functions-repo/master/Swagger/userresource.json",
+                                    "SwaggerFilePath": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/userresource.json",
                                     "RouteTag": "users"
                                 }
                             ]

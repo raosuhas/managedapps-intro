@@ -1,44 +1,63 @@
-# Developing Managed Applications
-Collection of ARM templates and scripts to get started with developing managed apps
+# Incorporating swagger into Custom Providers
+
+Custom providers provide an excellent way to extend azure ARM capabilities. This extension takes the form of a RESTful endpoint and so it is highly recommended that the API be accompanied by a swagger specification. To learn more about the advantages of specifying swagger and details on how to do it please visit : 
+https://swagger.io/specification/ 
 
 
-# Prerequisites
+# Tools
 
-- **Azure Powershell**
-Please install the latest version of Azure Powershell by running the following command in your powershell session : 
-Install-Module Az
+Following tools can help you with the creation of swagger documents : 
+
+- **Visual Studio Code**
+Visual studio code comes with various extensions that can help you with the creation of swagger specifications. Get it here : 
+https://code.visualstudio.com/
+
+- **Swagger Doc Viewer VS Code extension **
+This is an extension for visual studio code that helps with easy visualization and writing of swagger specifications. More details here. 
+https://code.visualstudio.com/ 
 
 
-# Custom Providers
 
-Custom Providers gives publishers in Azure a way to extend azure and azure resources. The customProviders resource providers also enables users to add actions and resources to managed apps to enable functionality on the managed apps to run programmatic commands on them.
+# How to specify the Swagger during creation of Custom Providers
 
-# How to topics
+In the resource deployment section for custom providers, the following section defines the swagger specification: 
 
-The samples provided in this github repo can be easily deployed to your Azure renvironment by running the powershell command provided at the root of this repo. 
-To run a template in a folder please use the following command  :
-
-### PowerShell
-```PowerShell
-.\Deploy-AzureResourceGroup.ps1 -ArtifactStagingDirectory [NameofthefolderToDEploy] -ResourceGroupLocation eastus -ResourceGroupName [ResourceGroupToDeploy]]
 ```
-The Deploy-AzureResourceGroup.ps1 is same as used in t azure-quickstart-templates along with a few additions to enable smooth deployment of the templates provided here. 
+[
+    {
+        "ApiTag": "[variables('customrpApiversion')]",
+        "SwaggerFilePath": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/pingaction.json",
+        "RouteTag": "ping"
+    },
+    {
+        "ApiTag": "[variables('customrpApiversion')]",
+        "SwaggerFilePath": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/userresource.json",
+        "RouteTag": "users"
+    }
+]
 
-### Deploy TO Azure
-In addition each template file also has an option to deploy to azure in the Readme.md file present at the the root of the folder
+```
 
-# Getting Started
+# Swagger File Path requirements 
+The swagger file paths specified should be on a public github repository and the links should point to the raw links for the URI. 
 
-Deploy a custom provider with a simple user resource and a ping action : 
-+ [** Creating a Custom Provider with resources **](CustomRPWithFunction/Readme.md)
 
-The above Custom resource provider is backed by an azure function app.
-Deploy the function app and understand the requirements for the api that backs the custom provider : 
-+ [** Creating an azure function **](SampleFunction/Readme.md)
+# Swagger validations done by the Custom Providers
 
-It is recommended to supply a swagger spec for custom providers when deploying them. 
-To learm more about swagger and how to incorporate validation for custom providers
-+ [** Incorporating swagger into Custom Providers **](CustomRPWithSwagger/Readme.md)
+There are 2 types of validations done by the resource providers for swagger : 
+
+- ** Deployment Time validation **
+During deployment of the cusotm resource provider , validation is done to make sure that the swagger file provided is a valid swagger as per specifications 
+
+- ** Runtime Validations **
+When the calls are being made to the custom resource provider , we will make checks against the swagger specifications to make sure that the endpoint is following the specifications for all calls made. Failure to follow the specifications will be flagged as a violation
+
+
+Swagger specifications make sure that the API's created for custom providers follow the Open API specifications which makes sure that these  : 
+- Are usable 
+- Follow Best practices
+- Make API modelling easier.
+
 
 
 
