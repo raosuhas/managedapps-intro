@@ -93,7 +93,7 @@
         {
             "apiVersion": "[variables('customrpApiversion')]",
             "type": "Microsoft.CustomProviders/resourceProviders",
-            "name":"public",
+            "name":"[parameters('funcname')]",
             "location":"[variables('location')]",
             "properties" :{
                                 "actions": [

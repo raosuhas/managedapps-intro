@@ -13,16 +13,15 @@ Install-Module Az
 
 Custom Providers gives publishers in Azure a way to extend azure and azure resources. The customProviders resource providers also enables users to add actions and resources to managed apps to enable functionality on the managed apps to run programmatic commands on them.
 
-# How to topics
+# Usage
 
-The samples provided in this github repo can be easily deployed to your Azure renvironment by running the powershell command provided at the root of this repo. 
-To run a template in a folder please use the following command  :
+The samples provided in this github repo can be deployed to your Azure renvironment by running the powershell command provided at the root of this repo. 
+To run a template in a folder please use the following command in a powershell session:
 
-### PowerShell
 ```PowerShell
 .\Deploy-AzureResourceGroup.ps1 -ArtifactStagingDirectory [NameofthefolderToDEploy] -ResourceGroupLocation eastus -ResourceGroupName [ResourceGroupToDeploy]]
 ```
-The Deploy-AzureResourceGroup.ps1 is same as used in t azure-quickstart-templates along with a few additions to enable smooth deployment of the templates provided here. 
+The Deploy-AzureResourceGroup.ps1 is same as used in the azure-quickstart-templates along with a few additions to enable smooth deployment of the templates provided here. 
 
 ### Deploy TO Azure
 In addition each template file also has an option to deploy to azure in the Readme.md file present at the the root of the folder
