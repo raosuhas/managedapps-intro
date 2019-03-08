@@ -14,7 +14,7 @@ Install-Module Az
 Custom Providers gives publishers in Azure a way to extend azure and azure resources. The customProviders resource providers also enables users to add actions and resources to managed apps to enable them to 
 
 
-+ [** Creating a Custom Provider with resources **] /CustomRPWithFunction/Readme.md
++ [** Creating a Custom Provider with resources **](/CustomRPWithFunction/Readme.md)
 
 
 
