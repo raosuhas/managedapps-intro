@@ -1,47 +1,47 @@
-# Developing Managed Applications
-Collection of ARM templates and scripts to get started with developing managed apps
+# Creating an azure function 
+
+In this section is the code required to deploy the azure function that backs the custom resource provider created in the first sample. 
+
+### Deploying the function. 
+
+To see how this function works you can go to azure portal and deploy a new azure function. To do this : 
+- Go to "Create a resource"
+- Type "Function App"
+- Follow the prompts to create a new function app. 
+
+Now we have to create two functions within this app to get the code. To do this go to functions and click on "New function" and select the type as HttpTrigger , finally select the authorization level as anonymous and click create.
+
+Now we have to add a binding to azure blob storage for saving our user data. To do this click on integrate and select new output and click on Azure blob Storage and click ok this should create a warning as below and ask you to install an extenstion. Click install here. 
+![](images/extensioninstall.png)
 
 
-# Prerequisites
+Once this is done go to the function files and upload and select all the files from "SampleFunction\HttpTrigger1" and upload them 
 
-- **Azure Powershell**
-Please install the latest version of Azure Powershell by running the following command in your powershell session : 
-Install-Module Az
+Similarly do the same for "Samplefunction\HttpTrigger2"
 
 
-# Custom Providers
+### Using the functions 
 
-Custom Providers gives publishers in Azure a way to extend azure and azure resources. The customProviders resource providers also enables users to add actions and resources to managed apps to enable functionality on the managed apps to run programmatic commands on them.
+You can use the test functions on the side of the functions to play with the functions and see how it is setup. 
 
-# How to topics
+Please note the following characteristics: 
 
-The samples provided in this github repo can be easily deployed to your Azure renvironment by running the powershell command provided at the root of this repo. 
-To run a template in a folder please use the following command  :
+The routing template for the function looks something like this : 
+subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceproviders/{minirpname}/{action}/{name}
 
-### PowerShell
-```PowerShell
-.\Deploy-AzureResourceGroup.ps1 -ArtifactStagingDirectory [NameofthefolderToDEploy] -ResourceGroupLocation eastus -ResourceGroupName [ResourceGroupToDeploy]]
-```
-The Deploy-AzureResourceGroup.ps1 is same as used in t azure-quickstart-templates along with a few additions to enable smooth deployment of the templates provided here. 
-
-### Deploy TO Azure
-In addition each template file also has an option to deploy to azure in the Readme.md file present at the the root of the folder
-
-# Getting Started
-
-Deploy a custom provider with a simple user resource and a ping action : 
-+ [** Creating a Custom Provider with resources **](CustomRPWithFunction/Readme.md)
-
-The above Custom resource provider is backed by an azure function app.
-Deploy the function app and understand the requirements for the api that backs the custom provider : 
-+ [** Creating an azure function **](SampleFunction/Readme.md)
-
-It is recommended to supply a swagger spec for custom providers when deploying them. 
-To learm more about swagger and how to incorporate validation for custom providers
-+ [** Incorporating swagger into Custom Providers **](CustomRPWithSwagger/Readme.md)
+THis means that when the function is called we will append the full ARM resource id of the custom providers in the route to the function. 
 
 
+A sample body input fot the function PUT call os as follows : 
+{
+        {
+        "name": "santa",
+        "type": "Microsoft.CustomProviders/resourceproviders/users",
+        "properties": {
+            "FullName": "Santa Claus",
+            "Location": "NorthPole"
+        }
+}
 
-
-
+Note that the name and type as defined here are required properties for the payload. Any other data will come in the properties section of the body. This is to conform to ARM standards of naming the resources. 
 
