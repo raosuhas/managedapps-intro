@@ -1,5 +1,10 @@
 # Incorporating swagger into Custom Providers
 
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fraosuhas%2Fmanagedapps-intro%2Fmaster%2FCustomRPWithSwagger%2Fazuredeploy.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/> 
+</a>
+
+
 Custom providers provide an excellent way to extend azure ARM capabilities. This extension takes the form of a RESTful endpoint and so it is highly recommended that the API be accompanied by a swagger specification. To learn more about the advantages of specifying swagger and details on how to do it please visit : 
 https://swagger.io/specification/ 
 
@@ -12,7 +17,7 @@ Following tools can help you with the creation of swagger documents :
 Visual studio code comes with various extensions that can help you with the creation of swagger specifications. Get it here : 
 https://code.visualstudio.com/
 
-- **Swagger Doc Viewer VS Code extension **
+- **Swagger Doc Viewer VS Code extension**
 This is an extension for visual studio code that helps with easy visualization and writing of swagger specifications. More details here. 
 https://code.visualstudio.com/ 
 

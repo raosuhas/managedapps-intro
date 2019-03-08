@@ -23,7 +23,7 @@ To run a template in a folder please use the following command in a powershell s
 ```
 The Deploy-AzureResourceGroup.ps1 is same as used in the azure-quickstart-templates along with a few additions to enable smooth deployment of the templates provided here. 
 
-### Deploy TO Azure
+### Deploy To Azure
 In addition each template file also has an option to deploy to azure in the Readme.md file present at the the root of the folder
 
 # Getting Started
@@ -36,7 +36,7 @@ Deploy the function app and understand the requirements for the api that backs t
 + [** Creating an azure function **](SampleFunction/Readme.md)
 
 It is recommended to supply a swagger spec for custom providers when deploying them. 
-To learm more about swagger and how to incorporate validation for custom providers
+To learm more about swagger and how to incorporate validation for custom providers:
 + [** Incorporating swagger into Custom Providers **](CustomRPWithSwagger/Readme.md)
 
 

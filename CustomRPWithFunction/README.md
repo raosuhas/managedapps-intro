@@ -12,6 +12,11 @@ To deploy this template please use the following command from the root of the gi
 .\Deploy-AzureResourceGroup.ps1 -ArtifactStagingDirectory CustomRPWithFunction -ResourceGroupLocation eastus -ResourceGroupName [ResourceGroupToDeploy]
 ```
 
+The customproviders resource is a hidden azure resources so to confirm that the resource provider has been deployed you will have to check the box that says Show hidden types in the azure portal browse page for the resource group.
+![](images/showhidden.png)
+
+Also navigating to the deployment details on the templates will show a new resource type called resourceproviders/users created on the custom resource provider with the name santa
+
 # Details on the custom resource provider created. 
 
 This sample deployment creates the following two apis on the resource. 
@@ -62,6 +67,8 @@ You can see this in action in the last part of the template where we create this
             ]
         }
 ```
+Navigating to the deployment details on the templatedeployment  will show a new resource type called resourceproviders/users created on the custom resource provider with the name santa
+![](images/createduser.png)
 
 To confirm that the user has been created , you can use a rest api client such as postman and run the following query and see the results : 
 
