@@ -15,7 +15,6 @@ To deploy this template please use the following command from the root of the gi
 The customproviders resource is a hidden azure resources so to confirm that the resource provider has been deployed you will have to check the box that says Show hidden types in the azure portal browse page for the resource group.
 ![](images/showhidden.png)
 
-Also navigating to the deployment details on the templates will show a new resource type called resourceproviders/users created on the custom resource provider with the name santa
 
 # Details on the custom resource provider created. 
 

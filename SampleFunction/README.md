@@ -12,6 +12,7 @@ To see how this function works you can go to azure portal and deploy a new azure
 Now we have to create two functions within this app to get the code. To do this go to functions and click on "New function" and select the type as HttpTrigger , finally select the authorization level as anonymous and click create.
 
 Now we have to add a binding to azure blob storage for saving our user data. To do this click on integrate and select new output and click on Azure blob Storage and click ok this should create a warning as below and ask you to install an extenstion. Click install here. 
+
 ![](images/extensioninstall.png)
 
 
@@ -22,17 +23,24 @@ Similarly do the same for "Samplefunction\HttpTrigger2"
 
 ### Using the functions 
 
-You can use the test functions on the side of the functions to play with the functions and see how it is setup. 
+You can use the test functions on the side of the functions blade to play with the functions and see how it is setup. 
 
 Please note the following characteristics: 
 
 The routing template for the function looks something like this : 
+
+```
 subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceproviders/{minirpname}/{action}/{name}
+```
 
-THis means that when the function is called we will append the full ARM resource id of the custom providers in the route to the function. 
+Note that when the  function is called the full ARM resource id of the custom providers is appended in the route to the function. 
 
+
+### Users function
 
 A sample body input fot the function PUT call os as follows : 
+
+```
 {
         {
         "name": "santa",
@@ -42,6 +50,12 @@ A sample body input fot the function PUT call os as follows :
             "Location": "NorthPole"
         }
 }
+```
 
-Note that the name and type as defined here are required properties for the payload. Any other data will come in the properties section of the body. This is to conform to ARM standards of naming the resources. 
+Note that the name and type as defined here are required properties for the payload. Any other data will come in the properties section of the body. This is to conform to ARM standards of creating the resources. 
 
+### Ping function
+In this case you just need to test the function by calling a POST action with the parameter action set to "ping" with random values for the other inputs. This will return the output of the POST action. 
+
+### Creating a zip fle for deployment of azure function. 
+Once you have made any modifications on the azure function you can export itand create a zip. Now update the zip file present in the artifacts folder for the function deployment example. After this running the deployment command will use your exported functions.
