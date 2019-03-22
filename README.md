@@ -19,7 +19,7 @@ The samples provided in this github repo can be deployed to your Azure renvironm
 To run a template in a folder please use the following command in a powershell session:
 
 ```PowerShell
-.\Deploy-AzureResourceGroup.ps1 -ArtifactStagingDirectory [NameofthefolderToDEploy] -ResourceGroupLocation eastus -ResourceGroupName [ResourceGroupToDeploy]]
+.\Deploy-AzureResourceGroup.ps1 -ArtifactStagingDirectory [NameofthefolderToDEploy] -ResourceGroupLocation eastus -ResourceGroupName [ResourceGroupToDeploy]
 ```
 The Deploy-AzureResourceGroup.ps1 is same as used in the azure-quickstart-templates along with a few additions to enable smooth deployment of the templates provided here. 
 
