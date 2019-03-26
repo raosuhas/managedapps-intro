@@ -1,7 +1,7 @@
 #Requires -Version 3.0
 #Requires -Module Az.Resources
 #Requires -Module Az.Storage
-#Requires -Module @{ModuleName="AzureRm.Profile";ModuleVersion="3.0"}
+#Requires -Module Az.Profile 
 
 Enable-AzureRmAlias -Scope CurrentUser
 Param(
