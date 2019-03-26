@@ -1,9 +1,9 @@
 #Requires -Version 3.0
-#Requires -Module AzureRM.Resources
+#Requires -Module Az.Resources
 #Requires -Module Azure.Storage
 #Requires -Module @{ModuleName="AzureRm.Profile";ModuleVersion="3.0"}
 
-
+Enable-AzureRmAlias -Scope CurrentUser
 Param(
     [string] [Parameter(Mandatory=$true)] $ArtifactStagingDirectory,
     [string] [Parameter(Mandatory=$true)] $ResourceGroupLocation,
