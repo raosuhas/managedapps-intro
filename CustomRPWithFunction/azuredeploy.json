@@ -99,29 +99,15 @@
                                 "actions": [
                                 {
                                     "name": "ping",
-                                    "routingType":"ProxyOnly",
-                                    "endpoints": [
-                                        {
-                                            "enabled": true,
-                                            "apiVersion": "[variables('customrpApiversion')]",
-                                            "endpointUri": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api')]",
-                                            "timeout": "PT15S"
-                                        }
-                                    ]
+                                    "routingType":"Proxy",
+                                    "endpoint": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api')]"
                                 }
                             ],
                             "resourceTypes": [
                                 {
                                     "name":"users",
-                                    "routingType":"ProxyOnly",
-                                    "endpoints": [
-                                        {
-                                            "enabled": true,
-                                            "apiVersion": "[variables('customrpApiversion')]",
-                                            "endpointUri": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api')]",
-                                            "timeout": "PT15S"
-                                        }
-                                    ]
+                                    "routingType":"Proxy",
+                                    "endpoint": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api')]"
                                 }
                             ]
                         }
