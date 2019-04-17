@@ -103,7 +103,10 @@
                                     "endpoint": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api/{requestPath}')]"
                                 }
                             ]
-                        }
+                        },
+            "dependsOn": [
+                "[concat('Microsoft.Web/sites/',parameters('funcname'))]"
+            ]
         },
         {
             "type": "Microsoft.CustomProviders/resourceProviders/users",
@@ -115,7 +118,7 @@
                 "Location": "NorthPole"
             },
             "dependsOn": [
-                "[concat('Microsoft.Web/sites/',parameters('funcname'))]"
+                "[concat('Microsoft.CustomProviders/resourceProviders/',parameters('funcname'))]"
             ]
         }
     ],
