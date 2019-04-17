@@ -10,19 +10,12 @@
             "type": "string",
             "defaultValue": ""
         },
-        "_artifactsLocationSasToken": {
-          "type": "securestring",
-          "metadata": {
-            "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated."
-          },
-          "defaultValue": ""
-        },
-        "_artifactsLocation": {
+        "zipFileBlobUri": {
           "type": "string",
           "metadata": {
-            "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated."
+            "description": "The Uri to the uploaded function zip file"
           },
-          "defaultValue": ""
+          "defaultValue": "https://github.com/raosuhas/managedapps-intro/blob/master/CustomRPWithFunction/Artifacts/functionpackage.zip?raw=true"
         }
     },
     "variables": {
@@ -72,7 +65,7 @@
                         },
                         {
                             "name":"WEBSITE_RUN_FROM_PACKAGE",
-                            "value":"[concat(parameters('_artifactsLocation'), 'Artifacts/functionpackage.zip', parameters('_artifactsLocationSasToken'))]"
+                            "value":"[parameters('zipFileBlobUri')]"
                         }
                     ]
                 },
@@ -99,29 +92,15 @@
                                 "actions": [
                                 {
                                     "name": "ping",
-                                    "routingType":"ProxyOnly",
-                                    "endpoints": [
-                                        {
-                                            "enabled": true,
-                                            "apiVersion": "[variables('customrpApiversion')]",
-                                            "endpointUri": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api')]",
-                                            "timeout": "PT15S"
-                                        }
-                                    ]
+                                    "routingType":"Proxy",
+                                    "endpoint": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api/{requestPath}')]"
                                 }
                             ],
                             "resourceTypes": [
                                 {
                                     "name":"users",
-                                    "routingType":"ProxyOnly",
-                                    "endpoints": [
-                                        {
-                                            "enabled": true,
-                                            "apiVersion": "[variables('customrpApiversion')]",
-                                            "endpointUri": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api')]",
-                                            "timeout": "PT15S"
-                                        }
-                                    ]
+                                    "routingType":"Proxy,Cache",
+                                    "endpoint": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api/{requestPath}')]"
                                 }
                             ]
                         }
