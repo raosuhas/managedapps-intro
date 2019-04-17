@@ -103,16 +103,14 @@
                                     "endpoint": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api/{requestPath}')]"
                                 }
                             ],
-                            "Specifications":[
+                            "Validations" :[
                                 {
-                                    "ApiTag": "[variables('customrpApiversion')]",
-                                    "SwaggerFilePath": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/pingaction.json",
-                                    "RouteTag": "ping"
+                                    "ValidationType": "swagger",
+                                    "Specification": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/pingaction.json"
                                 },
                                 {
-                                    "ApiTag": "[variables('customrpApiversion')]",
-                                    "SwaggerFilePath": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/userresource.json",
-                                    "RouteTag": "users"
+                                    "ValidationType": "swagger",
+                                    "Specification": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/userresource.json"
                                 }
                             ]
                         }
