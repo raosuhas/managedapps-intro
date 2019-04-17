@@ -113,7 +113,11 @@
                                     "Specification": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/userresource.json"
                                 }
                             ]
-                        }
+                        },
+            "dependsOn": [
+                "[concat('Microsoft.Web/sites/',parameters('funcname'))]"
+            ]
+        }
         },
         {
             "type": "Microsoft.CustomProviders/resourceProviders/users",
@@ -125,7 +129,7 @@
                 "Location": "NorthPole"
             },
             "dependsOn": [
-                "[concat('Microsoft.Web/sites/',parameters('funcname'))]"
+                "[concat('Microsoft.CustomProviders/resourceProviders/',parameters('funcname'))]"
             ]
         }
     ],
