@@ -31,15 +31,8 @@ The users resource is defined in the following part of the ARM template :
 "resourceTypes": [
                                 {
                                     "name":"users",
-                                    "routingType":"ProxyOnly",
-                                    "endpoints": [
-                                        {
-                                            "enabled": true,
-                                            "apiVersion": "[variables('customrpApiversion')]",
-                                            "endpointUri": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api')]",
-                                            "timeout": "PT15S"
-                                        }
-                                    ]
+                                    "routingType":"Proxy,Cache",
+                                    "endpoint": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api/{requestPath}')]"
                                 }
                             ]
 ```
@@ -85,15 +78,8 @@ In addition to users you can also define actions on your resourceprovider. An ex
 "actions": [
                                 {
                                     "name": "ping",
-                                    "routingType":"ProxyOnly",
-                                    "endpoints": [
-                                        {
-                                            "enabled": true,
-                                            "apiVersion": "[variables('customrpApiversion')]",
-                                            "endpointUri": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api')]",
-                                            "timeout": "PT15S"
-                                        }
-                                    ]
+                                    "routingType":"Proxy",
+                                    "endpoint": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api/{requestPath}')]"
                                 }
                             ]
 ```
