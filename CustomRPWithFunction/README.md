@@ -7,7 +7,7 @@
 This sample template deploys a custom resource provider to azure and creates a user using an ARM template. 
 To deploy this template please use the following command from the root of the github repo : 
 
-### Deploy
+### Deploy (Coming Soon: Please do not use for hackathon)
 ```Deploy
 .\Deploy-AzureResourceGroup.ps1 -ArtifactStagingDirectory CustomRPWithFunction -ResourceGroupLocation eastus -ResourceGroupName [ResourceGroupToDeploy]
 ```
@@ -36,7 +36,7 @@ The users resource is defined in the following part of the ARM template :
                                 }
                             ]
 ```
-In the above template we can see that the resource "users" has been defined as a ProxyOnly resource which means that it is backed by a REST api endpoint. The details of the endpoint come next. The endpoint uri in the section refers to the endpoint that implements this resource. When the resource is defined as above , the resource will support all CRUD calls like "GET", "PUT", "DELETE" etc and it is expected that the endpoint has implemented them. In the above case this means that we will be able to make the following calls on ARM  : 
+In the above template we can see that the resource "users" has been defined as a Proxy resource which means that it is backed by a REST api endpoint. The details of the endpoint come next. The endpoint uri in the section refers to the endpoint that implements this resource. When the resource is defined as above , the resource will support all CRUD calls like "GET", "PUT", "DELETE" etc and it is expected that the endpoint has implemented them. In the above case this means that we will be able to make the following calls on ARM  : 
 
 ```
 PUT/GET/DELETE /subscriptions/{subscriptionid}/resourceGroups/{resourcegroup}/providers/Microsoft.CustomProviders/resourceProviders/{customrpname}/users/name?<api-version>
