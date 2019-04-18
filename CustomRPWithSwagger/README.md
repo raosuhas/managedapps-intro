@@ -28,18 +28,16 @@ https://code.visualstudio.com/
 In the resource deployment section for custom providers, the following section defines the swagger specification: 
 
 ```
-[
-    {
-        "ApiTag": "[variables('customrpApiversion')]",
-        "SwaggerFilePath": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/pingaction.json",
-        "RouteTag": "ping"
-    },
-    {
-        "ApiTag": "[variables('customrpApiversion')]",
-        "SwaggerFilePath": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/userresource.json",
-        "RouteTag": "users"
-    }
-]
+"Validations" :[
+                                {
+                                    "ValidationType": "swagger",
+                                    "Specification": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/pingaction.json"
+                                },
+                                {
+                                    "ValidationType": "swagger",
+                                    "Specification": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/userresource.json"
+                                }
+                            ]
 
 ```
 
