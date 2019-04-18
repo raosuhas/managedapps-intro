@@ -4,7 +4,7 @@ Collection of ARM templates and scripts to get started with developing managed a
 
 # Prerequisites
 
-- **Azure Powershell**
+- **Azure Powershell** (Coming Soon: Please do not use for hackathon)
 Please install the latest version of Azure Powershell by running the following command in your powershell session : 
 Install-Module Az
 
