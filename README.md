@@ -15,6 +15,11 @@ Custom Providers gives publishers in Azure a way to extend azure and azure resou
 
 # Usage
 
+### Deploy To Azure
+Each template file has an option to deploy to azure in the Readme.md file present at the the root of the folder
+
+
+### Powershell Script (Coming Soon: Please do not use for hackathon)
 The samples provided in this github repo can be deployed to your Azure renvironment by running the powershell command provided at the root of this repo. 
 To run a template in a folder please use the following command in a powershell session:
 
@@ -23,8 +28,7 @@ To run a template in a folder please use the following command in a powershell s
 ```
 The Deploy-AzureResourceGroup.ps1 is same as used in the azure-quickstart-templates along with a few additions to enable smooth deployment of the templates provided here. 
 
-### Deploy To Azure
-In addition each template file also has an option to deploy to azure in the Readme.md file present at the the root of the folder
+
 
 # Getting Started
 
