@@ -1,0 +1,20 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "route": "subscriptions/{subscriptionId:guid}/resourceGroups/{rgName}/providers/Microsoft.CustomProviders/ResourceProviders/nodeJsExample/myResource/{resourceName}",
+      "methods": [
+        "put"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}
