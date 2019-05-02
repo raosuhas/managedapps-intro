@@ -1,0 +1,164 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "funcname": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "storageName": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "zipFileBlobUri": {
+            "type": "string",
+            "metadata": {
+                "description": "The Uri to the uploaded function zip file"
+            },
+            "defaultValue": "https://github.com/raosuhas/managedapps-intro/blob/master/SharePointManagementRPWithFunction/CustomerSharePointManager.zip?raw=true"
+        },
+        "spSiteUrl": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The SharePoint site collection URL under which customer websites will be created"
+            }
+        },
+        "spWebTemplate": {
+            "type": "string",
+            "defaultValue": "SITEPAGEPUBLISHING#0",
+            "metadata": {
+                "description": "The web template for customer sites. Refer to SharePoint documentation for more information"
+            }
+        },
+        "spWebLanguage": {
+            "type": "int",
+            "defaultValue": 1033,
+            "metadata": {
+                "description": "The language for customer sites. Refer to SharePoint documentation for more information"
+            }
+        },
+        "spId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Client Id generated from SharePoint appregnew.aspx page of site collection"
+            }
+        },
+        "spSecret": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Client Secret generated from SharePoint appregnew.aspx page of site collection"
+            }
+        }
+    },
+    "variables": {
+        "location": "eastus",
+        "customrpApiversion": "2018-09-01-preview"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "kind": "functionapp",
+            "name": "[parameters('funcname')]",
+            "apiVersion": "2018-02-01",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageName'))]"
+            ],
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "name": "[parameters('funcname')]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "AzureWebJobsDashboard",
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageName')), '2015-05-01-preview').key1)]"
+                        },
+                        {
+                            "name": "AzureWebJobsStorage",
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageName')), '2015-05-01-preview').key1)]"
+                        },
+                        {
+                            "name": "FUNCTIONS_EXTENSION_VERSION",
+                            "value": "~1"
+                        },
+                        {
+                            "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageName')), '2015-05-01-preview').key1)]"
+                        },
+                        {
+                            "name": "WEBSITE_CONTENTSHARE",
+                            "value": "[concat(toLower(parameters('funcname')), 'b86e')]"
+                        },
+                        {
+                            "name": "WEBSITE_RUN_FROM_PACKAGE",
+                            "value": "[parameters('zipFileBlobUri')]"
+                        },
+                        {
+                            "name": "spSiteUrl",
+                            "value": "[parameters('spSiteUrl')]"
+                        },
+                        {
+                            "name": "spWebTemplate",
+                            "value": "[parameters('spWebTemplate')]"
+                        },
+                        {
+                            "name": "spWebLanguage",
+                            "value": "[parameters('spWebLanguage')]"
+                        },
+                        {
+                            "name": "spId",
+                            "value": "[parameters('spId')]"
+                        },
+                        {
+                            "name": "spSecret",
+                            "value": "[parameters('spSecret')]"
+                        }
+                    ]
+                },
+                "clientAffinityEnabled": false,
+                "reserved": false
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('storageName')]",
+            "apiVersion": "2018-02-01",
+            "kind": "StorageV2",
+            "location": "[variables('location')]",
+            "sku": {
+                "name": "Standard_LRS"
+            }
+        },
+        {
+            "apiVersion": "[variables('customrpApiversion')]",
+            "type": "Microsoft.CustomProviders/resourceProviders",
+            "name": "[parameters('funcname')]",
+            "location": "[variables('location')]",
+            "properties": {
+                "resourcetypes": [
+                    {
+                        "name": "sites",
+                        "routingType": "Proxy",
+                        "endpoint": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api/sites')]"
+                    }
+                ],
+                "resourceTypes": [
+                    {
+                        "name": "events",
+                        "routingType": "Proxy",
+                        "endpoint": "[concat('https://', parameters('funcname'), '.azurewebsites.net/api/events')]"
+                    }
+                ]
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/sites/',parameters('funcname'))]"
+            ]
+        }
+    ],
+    "outputs": {}
+}
