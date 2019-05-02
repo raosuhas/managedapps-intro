@@ -17,19 +17,19 @@ Each template file has an option to deploy to azure in the Readme.md file presen
 # Getting Started
 
 Deploy a custom provider with a simple user resource and a ping action : 
-+ [** Creating a Custom Provider with resources **](CustomRPWithFunction/Readme.md)
++ [** Creating a Custom Provider with resources **](CustomRPWithFunction/README.md)
 
 The above Custom resource provider is backed by an azure function app. You can read about to create this function and update it in the folllowing sample
 
 Deploy the function app and understand the requirements for the api that backs the custom provider : 
-+ [** Creating an azure function **](/SampleFunction/CSharpSimpleProvider/Readme.md)
++ [** Creating an azure function **](/SampleFunction/CSharpSimpleProvider/README.md)
 
 Please check out the various samples of how you can use the custom providers in the Sample functions folder:
-+ [** Sample Functions**](/SampleFunction/CSharpSimpleProvider/Readme.md)
++ [** Sample Functions**](/SampleFunction/CSharpSimpleProvider/README.md)
 
 It is recommended to supply a swagger spec for custom providers when deploying them. 
 To learm more about swagger and how to incorporate validation for custom providers:
-+ [** Incorporating swagger into Custom Providers **](CustomRPWithSwagger/Readme.md)
++ [** Incorporating swagger into Custom Providers **](CustomRPWithSwagger/README.md)
 
 
 
