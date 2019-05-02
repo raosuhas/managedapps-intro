@@ -15,7 +15,7 @@
           "metadata": {
             "description": "The Uri to the uploaded function zip file"
           },
-          "defaultValue": "https://github.com/raosuhas/managedapps-intro/blob/master/CustomRPWithFunction/Artifacts/functionpackage.zip?raw=true"
+          "defaultValue": "https://github.com/raosuhas/managedapps-intro/blob/master/CSharpSimpleProvider/Artifacts/functionZip/functionpackage.zip?raw=true"
         }
     },
     "variables": {
