@@ -9,6 +9,10 @@
         "userLocation": {
             "type": "string",
             "defaultValue": "NorthPole"
+        },
+        "funcname": {
+            "type": "string",
+            "defaultValue": ""
         }
     },
     "variables": {
