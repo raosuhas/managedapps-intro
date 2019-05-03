@@ -93,7 +93,7 @@ https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{reso
 
 
 The code that enables this process is all implemented as part of the azure function that is deployed along with the template. To further understand how the function has been configured please look here : 
-+ [** Creating an azure function **](SampleFunction/README.md)
++ [** Creating an azure function **](SampleFunctions/CSharpSimpleProvider/README.md)
 
 
 
