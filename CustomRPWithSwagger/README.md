@@ -19,7 +19,7 @@ https://code.visualstudio.com/
 
 - **Swagger Doc Viewer VS Code extension**
 This is an extension for visual studio code that helps with easy visualization and writing of swagger specifications. More details here. 
-https://code.visualstudio.com/ 
+https://marketplace.visualstudio.com/items?itemName=mimarec.swagger-doc-viewer 
 
 
 
@@ -31,11 +31,11 @@ In the resource deployment section for custom providers, the following section d
 "Validations" :[
                                 {
                                     "ValidationType": "swagger",
-                                    "Specification": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/pingaction.json"
+                                    "Specification": "https://raw.githubusercontent.com/raosuhas/managedapps-intro/master/CustomRPWithSwagger/Artifacts/Swagger/pingaction.json"
                                 },
                                 {
                                     "ValidationType": "swagger",
-                                    "Specification": "https://raw.githubusercontent.com/raosuhas/functions-repo/master/Swagger/userresource.json"
+                                    "Specification": "https://raw.githubusercontent.com/raosuhas/managedapps-intro/master/CustomRPWithSwagger/Artifacts/Swagger/userresource.json"
                                 }
                             ]
 
